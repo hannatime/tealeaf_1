@@ -6,8 +6,25 @@ end
 
 #[['H', '2'],['D','A'],[...]] = TOTAL
 def calculate_total(cards) 
+  arr = cards.map{|e| e[1] }
 
+  total = 0
+  arr.each do |value|
+    if value == 'A'
+      total += 11
 
+    elsif value.to_i == 0
+      total += 10
+    else
+      total += value.to_i
+    end
+  end
+  
+  arr.select{|e| e == 'A'}.count.times do
+    total -= 10 if total > 21
+  end
+
+  total
 end
 
 say "welcome to blackjack"
@@ -15,7 +32,7 @@ say "You have $200, how much would you like to bet?"
 bet = gets.chomp.to_i 
 while true
   if bet > 0 
-  say "You've bet $#{bet}, lets play!"
+    say "You've bet $#{bet}, lets play!"
   break
   else 
     puts "Don't be stingy"
@@ -62,6 +79,7 @@ if hit_or_stay = '1'
   say "-----------------------------------------"
   say "Dealer has: #{dealer_cards[0]} and #{dealer_cards[1]}"
   say "You have: #{my_cards[0]},#{my_cards[1]} and #{my_cards[2]}"
+  my_total = calculate_total(my_cards)
   say "your total is #{my_total}, the dealer has #{dealer_total}"
   say "-----------------------------------------"
   say "-----------------------------------------"
