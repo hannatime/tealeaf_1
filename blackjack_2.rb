@@ -82,7 +82,7 @@ while my_total < 21
     my_total = calculate_total(my_cards)
     say "Dealer has: #{dealer_cards[0]} and *card hidden*"
     say "#{player_name.capitalize} has: #{my_cards[0]} #{my_cards[1]} #{my_cards[2]} #{my_cards[3]} #{my_cards[4]}"
-    say "The totals are #{player_name.capitalize} - #{my_total}."
+    say "#{player_name.capitalize}s total is #{my_total}."
   
   elsif hit_or_stay == '2'
     break
@@ -97,7 +97,7 @@ end
   end
 
   if my_total > 21
-    say "Sorry #{player_name.capitalize}, you're bust"
+    say "Sorry #{player_name.capitalize}, you're Bust"
     exit
   end
 
