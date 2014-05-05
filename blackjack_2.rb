@@ -59,83 +59,81 @@ dealer_cards << deck.pop
 dealer_total = calculate_total(dealer_cards)
 my_total = calculate_total(my_cards)
 
-#Show First Cards
-say "-----------------------------------------"
-say "-----------------------------------------"
-say "Dealer has: #{dealer_cards[0]} and *card hidden*"
-say "#{player_name.capitalize} has: #{my_cards[0]} and #{my_cards[1]}"
-say "#{player_name.capitalize}s total is #{my_total}."
-say "-----------------------------------------"
-say "-----------------------------------------"
-say ""
+  #Show First Cards
+  say "-----------------------------------------"
+  say "-----------------------------------------"
+  say "Dealer has: #{dealer_cards[0]} and *card hidden*"
+  say "#{player_name.capitalize} has: #{my_cards[0]} and #{my_cards[1]}"
+  say "#{player_name.capitalize}s total is #{my_total}."
+  say "-----------------------------------------"
+  say "-----------------------------------------"
+  say ""
 
+  #Player Turn Iterator
+  while my_total < 21
 
-#Player Turn Iterator
-while my_total < 21
-
-  say "What would you like to do #{player_name.capitalize}? enter 1) for HIT or 2) for STAY"
-  hit_or_stay = gets.chomp
-  
-#Hit or stay conditional
-  if hit_or_stay == '1'
-    my_cards << deck.pop
-    my_total = calculate_total(my_cards)
-    say "Dealer has: #{dealer_cards[0]} and *card hidden*"
-    say "#{player_name.capitalize} has: #{my_cards[0]} #{my_cards[1]} #{my_cards[2]} #{my_cards[3]} #{my_cards[4]}"
-    say "#{player_name.capitalize}s total is #{my_total}."
-  
-  elsif hit_or_stay == '2'
-    break
-  end
-end
-
-    #Blackjack edgecase conditional 
-  
-  if my_total == 21
-    say "Congratulations #{player_name.capitalize}, you got blackjack you win" 
-    exit
-  end
-
-  if my_total > 21
-    say "Sorry #{player_name.capitalize}, you're Bust"
-    exit
-  end
-
-say "*the dealer turns over their card*"
-say "Dealer has: #{dealer_cards[0]} #{dealer_cards[1]}"
-say "#{player_name.capitalize}s total is #{my_total}, the dealer has #{dealer_total}" 
-
-#Dealer Turn Iterator
-while dealer_total < 17
-    say "The dealer hits"
-    dealer_cards << deck.pop
-    dealer_total = calculate_total(dealer_cards)
-    say "Dealer has: #{dealer_cards[0]} #{dealer_cards[1]} #{dealer_cards[2]} #{dealer_cards[3]} #{dealer_cards[4]}"
-    say "#{player_name.capitalize} has: #{my_cards[0]} #{my_cards[1]} #{my_cards[2]} #{my_cards[3]} #{my_cards[4]}"
-    say "#{player_name.capitalize}s total is #{my_total}, the dealer has #{dealer_total}"
-end
+    say "What would you like to do #{player_name.capitalize}? enter 1) for HIT or 2) for STAY"
+    hit_or_stay = gets.chomp
     
-if dealer_total == 21
-  say "Sorry #{player_name.capitalize}, the dealer got blackjack you lose"
-  exit
-end
+  #Hit or stay conditional
+    if hit_or_stay == '1'
+      my_cards << deck.pop
+      my_total = calculate_total(my_cards)
+      say "Dealer has: #{dealer_cards[0]} and *card hidden*"
+      say "#{player_name.capitalize} has: #{my_cards[0]} #{my_cards[1]} #{my_cards[2]} #{my_cards[3]} #{my_cards[4]}"
+      say "#{player_name.capitalize}s total is #{my_total}."
+    
+    elsif hit_or_stay == '2'
+      break
+    end
+  end
 
-if dealer_total > 21
-  say "The dealer is bust, you win!"
-  exit
+      #Blackjack edgecase conditional 
+    
+    if my_total == 21
+      say "Congratulations #{player_name.capitalize}, you got blackjack you win" 
+      exit
+    end
 
-elsif dealer_total > my_total
-  puts "The dealer has #{dealer_total}, you have #{my_total}"
-  puts "Sorry #{player_name.capitalize}, the dealer wins"
+    if my_total > 21
+      say "Sorry #{player_name.capitalize}, you're Bust"
+      exit
+    end
 
-elsif dealer_total == my_total
-  puts "The dealer has #{dealer_total}, you have #{my_total}"
-  puts "It's a draw, no one wins"
-  exit
+  say "*the dealer turns over their card*"
+  say "Dealer has: #{dealer_cards[0]} #{dealer_cards[1]}"
+  say "#{player_name.capitalize}s total is #{my_total}, the dealer has #{dealer_total}" 
 
-elsif my_total > dealer_total
-  puts "Sweet, you have #{my_total}, the dealer has #{dealer_total}"
-  puts "#{player_name.capitalize} wins"
-  exit
-end
-  
+  #Dealer Turn Iterator
+  while dealer_total < 17
+      say "The dealer hits"
+      dealer_cards << deck.pop
+      dealer_total = calculate_total(dealer_cards)
+      say "Dealer has: #{dealer_cards[0]} #{dealer_cards[1]} #{dealer_cards[2]} #{dealer_cards[3]} #{dealer_cards[4]}"
+      say "#{player_name.capitalize} has: #{my_cards[0]} #{my_cards[1]} #{my_cards[2]} #{my_cards[3]} #{my_cards[4]}"
+      say "#{player_name.capitalize}s total is #{my_total}, the dealer has #{dealer_total}"
+  end
+      
+  if dealer_total == 21
+    say "Sorry #{player_name.capitalize}, the dealer got blackjack you lose"
+    exit
+  end
+
+  if dealer_total > 21
+    say "The dealer is bust, you win!"
+    exit
+
+  elsif dealer_total > my_total
+    puts "The dealer has #{dealer_total}, you have #{my_total}"
+    puts "Sorry #{player_name.capitalize}, the dealer wins"
+
+  elsif dealer_total == my_total
+    puts "The dealer has #{dealer_total}, you have #{my_total}"
+    puts "It's a draw, no one wins"
+    exit
+
+  elsif my_total > dealer_total
+    puts "Sweet, you have #{my_total}, the dealer has #{dealer_total}"
+    puts "#{player_name.capitalize} wins"
+    exit
+  end

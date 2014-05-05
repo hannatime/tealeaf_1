@@ -1,0 +1,50 @@
+1. 
+a = 1
+b = a
+b = 3
+
+a => 1
+
+2.
+An array is perfect for ordered lists, a hash is signified by key value pairs
+
+3.
+arr = [1, 2, 3, 3]
+ => [1, 2, 3, 3] 
+[1, 2, 3, 3].uniq
+ => [1, 2, 3] 
+[1, 2, 3, 3].uniq!
+ => [1, 2, 3] 
+
+4. 
+select documentation
+Returns a new array containing all elements of ary for which the given block returns a true value.
+If no block is given, an Enumerator is returned instead.
+array = [1, 2, 3, 4, 5]
+
+select 
+uses a boolean true or false to select the in the array elements to return, 
+array.select {|e| e % 2 == 0}
+=> [2, 4]
+
+map documentation
+Invokes the given block once for each element of self.
+Creates a new array containing the values returned by the block.
+If no block is given, an Enumerator is returned instead.
+
+map 
+can return a modified array
+array.map { |e| e *2}
+=> [2, 4, 6, 8, 10] 
+
+5.
+people = { "John Hanna" => 10, "Ben Hanna" => 6 }
+
+6.
+=> "no way!"
+
+7.
+x = 4
+
+8.
+x = an undefined variable
